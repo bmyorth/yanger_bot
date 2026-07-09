@@ -114,6 +114,15 @@ Para detenerlo, vuelve a la terminal y presiona `Ctrl + C`.
 
 ---
 
+## Solución de problemas al desplegar (Railway u otros)
+
+**Error: `AttributeError: 'Application' object has no attribute '_Application__stop_running_marker' and no __dict__ for setting new attributes`**
+
+Esto pasa cuando el servidor usa una versión de Python (por ejemplo 3.13) más nueva que la que soportaba tu versión fijada de `python-telegram-bot`. Se soluciona así:
+1. Verifica que `requirements.txt` tenga `python-telegram-bot==22.8` (o una versión igual o más reciente).
+2. Este proyecto ya incluye un archivo `.python-version` con `3.12` para que Railway use esa versión de Python de forma consistente.
+3. En Railway, vuelve a desplegar forzando una build limpia (sin caché): **Deployments → ⋮ → Redeploy**.
+
 ## Cómo personalizar
 
 ### Agregar/editar productos
